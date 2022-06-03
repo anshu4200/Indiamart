@@ -1,11 +1,11 @@
-package com.indiamart.service;
+package com.indiamart.service.customer;
 
 import com.indiamart.entity.Product;
 
 
 import java.util.List;
 
-public interface ProductService {
+public interface CustomerService {
 
 
     public Product getProductByName(String name);
@@ -16,9 +16,4 @@ public interface ProductService {
 
     public List<Product> getProductByPrice(String price);
 
-    public List<Product> addProduct(List<Product> product);
-
-    public void updateProduct(Product product);
-
-    public void deleteProduct(int id);
 }
