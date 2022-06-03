@@ -1,5 +1,9 @@
 # IndiaMart 
 
+###
+Swagger
+https://documenter.getpostman.com/view/16106019/Uz5Gmaec
+
 ### Description
 This Project is used for the consumer as well as the seller according to the requirement to get the Product details.
 
