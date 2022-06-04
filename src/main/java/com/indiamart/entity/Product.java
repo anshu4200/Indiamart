@@ -32,4 +32,24 @@ public class Product {
     @Column(name = "SELLER_ID")
     private String sellerId;
 
+    public Product withName(String name){
+        this.name = name;
+        return this;
+    }
+    public Product withType(String type){
+        this.type = type;
+        return this;
+    }
+    public Product withCategory(String category){
+        this.category = category;
+        return this;
+    }
+    public Product withPrice(String price){
+        this.price = price;
+        return this;
+    }
+    public Product withSellerId(String sellerId){
+        this.sellerId = sellerId;
+        return this;
+    }
 }

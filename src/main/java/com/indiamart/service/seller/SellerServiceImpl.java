@@ -28,13 +28,21 @@ public class SellerServiceImpl implements SellerService{
                 throw new BusinessException("701","Please send the proper product details");
             }
 
-            Product product1 = new Product();
+/*
             product1.setName(productP.getName());
             product1.setType(productP.getType());
             product1.setCategory(productP.getCategory());
             product1.setPrice(productP.getPrice());
-            product1.setSellerId(productP.getSellerId());
+            product1.setSellerId(productP.getSellerId());*/
+
+            Product product1 = new Product();
+            product1.withName(productP.getName())
+                    .withType(productP.getType())
+                    .withCategory(productP.getCategory())
+                    .withPrice(productP.getPrice())
+                    .withSellerId(productP.getSellerId());
             list.add(product1);
+
         });
         return crudRepository.saveAll(list);
 
