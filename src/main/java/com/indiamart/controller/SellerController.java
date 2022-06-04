@@ -11,12 +11,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping(value = "/seller")
 public class SellerController {
 
     @Autowired
     private SellerService sellerService;
 
-    @PostMapping(value = "/seller/saved")
+    @PostMapping(value = "/saved")
     public ResponseEntity<?> addProduct(@RequestBody List<Product> product){
         try{
             List<Product> addedProduct = sellerService.addProduct(product);
@@ -30,7 +31,7 @@ public class SellerController {
         }
     }
 
-    @PutMapping(value = "/seller/update")
+    @PutMapping(value = "/update")
     public ResponseEntity<?> updateEmployes(@RequestBody Product product){
         try{
             sellerService.updateProduct(product);
@@ -44,7 +45,7 @@ public class SellerController {
         }
     }
 
-    @DeleteMapping(value = "/seller/delete/{id}")
+    @DeleteMapping(value = "/delete/{id}")
     public ResponseEntity<?> deleteEmployeeById(@PathVariable("id") int id){
         try{
             sellerService.deleteProduct(id);

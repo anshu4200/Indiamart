@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class SellerServiceImpl implements SellerService{
@@ -35,21 +36,20 @@ public class SellerServiceImpl implements SellerService{
             product1.setSellerId(productP.getSellerId());
             list.add(product1);
         });
-        List<Product> savedProduct = crudRepository.saveAll(list);
-        return savedProduct;
+        return crudRepository.saveAll(list);
+
     }
 
     @Override
     public void updateProduct(Product product) {
-        List<Product> list = crudRepository.findBySellerId(product.getSellerId());
-        if(list.isEmpty()){
+        Optional<Product> product1 = crudRepository.findById(product.getId());
+        if(product1.isEmpty()){
             throw new BusinessException("741","Product not found to update");
         }
-        list.stream().forEach(e->{
-            if(product.getId()==e.getId()) {
-                crudRepository.save(product);
-            }
-        });
+       if(product.getSellerId().equals(product1.get().getSellerId())){
+          throw new BusinessException("711","This is not your product,So you will not be able to update the product");
+       }
+        crudRepository.save(product);
     }
 
     @Override

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping(value = "/customer")
 public class CustomerController {
 /*
 Exception handling can also be done with the help @ControllerAdvice
@@ -20,7 +21,7 @@ Exception handling can also be done with the help @ControllerAdvice
     @Autowired
     private CustomerService customerService;
 
-    @GetMapping(value = "customer/name/{name}")
+    @GetMapping(value = "/name/{name}")
     public ResponseEntity<?> getProductByName(@PathVariable("name") String name){
         try{
             Product getProduct = customerService.getProductByName(name);
@@ -34,7 +35,7 @@ Exception handling can also be done with the help @ControllerAdvice
         }
     }
 
-    @GetMapping(value = "customer/type/{type}")
+    @GetMapping(value = "/type/{type}")
     public ResponseEntity<?> getProductByType(@PathVariable("type") String type){
         try{
             List<Product> getProduct = customerService.getProductByType(type);
@@ -47,7 +48,7 @@ Exception handling can also be done with the help @ControllerAdvice
             return new ResponseEntity<>(controllerException,HttpStatus.BAD_REQUEST);
         }
     }
-    @GetMapping(value = "customer/category/{category}")
+    @GetMapping(value = "/category/{category}")
     public ResponseEntity<?> getProductByCategory(@PathVariable("category") String category){
         try{
             List<Product> getProduct = customerService.getProductByCategory(category);
@@ -60,7 +61,7 @@ Exception handling can also be done with the help @ControllerAdvice
             return new ResponseEntity<>(controllerException,HttpStatus.BAD_REQUEST);
         }
     }
-    @GetMapping(value = "customer/priceRange/{price}")
+    @GetMapping(value = "/priceRange/{price}")
     public ResponseEntity<? > getProductByPrice(@PathVariable("price") String price){
         try{
             List<Product> getProduct = customerService.getProductByPrice(price);
